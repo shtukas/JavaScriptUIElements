@@ -1,16 +1,16 @@
 
-var JavascriptUIElementsX35877E45 = {}
+var JavaScriptUIElementsX35877E45 = {}
 
-JavascriptUIElementsX35877E45.core = {}
+JavaScriptUIElementsX35877E45.core = {}
 
-JavascriptUIElementsX35877E45.core.randomString = function randomString(length, chars) {
+JavaScriptUIElementsX35877E45.core.randomString = function randomString(length, chars) {
     var result = '';
     for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
     return result;
 }
 
-JavascriptUIElementsX35877E45.core.ridentifier = function(){
-    return 'rid'+JavascriptUIElementsX35877E45.core.randomString(16,'0123456789abcdefghijklmnopqrstuvwxyz');
+JavaScriptUIElementsX35877E45.core.ridentifier = function(){
+    return 'rid'+JavaScriptUIElementsX35877E45.core.randomString(16,'0123456789abcdefghijklmnopqrstuvwxyz');
 }
 
 /*
@@ -18,17 +18,17 @@ JavascriptUIElementsX35877E45.core.ridentifier = function(){
     Dependencies: jQuery
 */
 
-JavascriptUIElementsX35877E45.suite1 = {}
+JavaScriptUIElementsX35877E45.suite1 = {}
 
-JavascriptUIElementsX35877E45.suite1.textInputWithSubmitButton = function(extension_parameters){
+JavaScriptUIElementsX35877E45.suite1.textInputWithSubmitButton = function(extension_parameters){
     var parameters = {
         targetDiv: null,
         valueHandler : null
     }
     $.extend( parameters, extension_parameters );
     if(!parameters['targetDiv']) return false;
-    var uuid1 = JavascriptUIElementsX35877E45.core.ridentifier();
-    var uuid2 = JavascriptUIElementsX35877E45.core.ridentifier();
+    var uuid1 = JavaScriptUIElementsX35877E45.core.ridentifier();
+    var uuid2 = JavaScriptUIElementsX35877E45.core.ridentifier();
     var html1 = '';
     html1 += '<div>';
     html1 += '    <input id="'+uuid1+'" type="text">';
