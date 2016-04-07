@@ -119,3 +119,39 @@ JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_DropDown = func
     return true;
 }
 
+JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_OneButtonPerLine = function(input_parameters){
+    var parameters = {
+        targetDiv: null,  // mandatory
+        announce: null,   // mandatory
+        options: null     // mandatory
+    }
+    /*
+
+        announce: value at the default (top) position of the drop down menu
+
+        option: an array of arrays of length 2
+        Each array of length 2 is made of the description and the function of arity 0 to fire if that option is chosen
+        example [
+            ["Alice", function(){ alert("Alice"); }]
+            ["Bob",   function(){ alert("Bob"); }]
+        ]
+
+    */
+    $.extend( parameters, input_parameters );
+    if(!parameters. targetDiv) return false;
+    if(!parameters.options) return false;
+    var html1 = ''
+    html1 += '<div>'+parameters.announce+'</div>'
+    $.each( parameters.options, function(index, option) {
+        // val: ["Alice", function(){ alert("Alice"); }]
+        var uuid = JavaScriptUIElementsX35877E45.core.ridentifier();
+        html1 += '<div><input type="button" id="'+uuid+'" value="'+option[0]+'" /></div>'
+        $(document).delegate('#'+uuid, 'click', function(e){
+            e.preventDefault();
+            option[1]();
+        });
+    });
+    $('#'+parameters.targetDiv).html(html1);
+
+    return true;
+}
