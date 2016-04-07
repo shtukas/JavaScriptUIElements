@@ -13,19 +13,39 @@ JavaScriptUIElementsX35877E45.core.ridentifier = function(){
     return 'rid'+JavaScriptUIElementsX35877E45.core.randomString(16,'0123456789abcdefghijklmnopqrstuvwxyz');
 }
 
+// -----------------------------------------------------------------------------
 /*
-    Standard elements.
     Dependencies: jQuery
+    Suite1 works with existing markup
 */
 
 JavaScriptUIElementsX35877E45.suite1 = {}
+JavaScriptUIElementsX35877E45.suite1.attachClickBehaviorToElement = function(input_parameters){
+    var parameters = {
+        targetDiv: null,
+        fn : null
+    }
+    $.extend( parameters, input_parameters );
+    $(document).delegate('#'+parameters['targetDiv'], 'click', function(e){
+        e.preventDefault();
+        parameters['fn']();
+    });    
+}
 
-JavaScriptUIElementsX35877E45.suite1.textInputWithSubmitButton = function(extension_parameters){
+// -----------------------------------------------------------------------------
+/*
+    Dependencies: jQuery
+    Suite2 function generates all needed markup
+*/
+
+JavaScriptUIElementsX35877E45.suite2 = {}
+
+JavaScriptUIElementsX35877E45.suite2.textInputWithSubmitButton = function(input_parameters){
     var parameters = {
         targetDiv: null,
         valueHandler : null
     }
-    $.extend( parameters, extension_parameters );
+    $.extend( parameters, input_parameters );
     if(!parameters['targetDiv']) return false;
     var uuid1 = JavaScriptUIElementsX35877E45.core.ridentifier();
     var uuid2 = JavaScriptUIElementsX35877E45.core.ridentifier();
