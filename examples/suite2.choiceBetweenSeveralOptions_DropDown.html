@@ -19,9 +19,15 @@
             targetDiv: 'contents1',
             announce: 'Dropdown Menu Demo',
             options: [
-                ['option 1', function(){ alert('You have chosen option 1') }],
-                ['option 2', function(){ alert('You have chosen option 2') }]
-            ],
+                {
+                    description: 'option 1',
+                    fn: function(){ alert('You have chosen option 1') }
+                },
+                {
+                    description: 'option 2',
+                    fn: function(){ alert('You have chosen option 2') }
+                }
+            ]
         });
     </script>
 </body>

@@ -83,11 +83,15 @@ JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_DropDown = func
 
         announce: value at the default (top) position of the drop down menu
 
-        option: an array of arrays of length 2
-        Each array of length 2 is made of the description and the function of arity 0 to fire if that option is chosen
-        example [
-            ["Alice", function(){ alert("Alice"); }]
-            ["Bob",   function(){ alert("Bob"); }]
+        option: example: [
+            {
+                description: "Alice",
+                fn: function(){ alert("Alice"); }
+            },
+            {
+                description: "Bob",
+                fn: function(){ alert("Bob"); }
+            }
         ]
 
     */
@@ -99,8 +103,7 @@ JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_DropDown = func
     html1 += '<select id="'+uuid1+'">';
     html1 += '<option value="">'+parameters.announce+'</option>'
     $.each( parameters.options, function(index, option) {
-        // val: ["Alice", function(){ alert("Alice"); }]
-        html1 += '<option value="'+btoa(option[0])+'">'+option[0]+'</option>'
+        html1 += '<option value="'+btoa(option.description)+'">'+option.description+'</option>'
     });
     html1 += '</select>'
     $('#'+parameters.targetDiv).html(html1);
@@ -111,8 +114,8 @@ JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_DropDown = func
             return;
         }
         $.each( parameters.options, function(index, option) {
-            if(selected==btoa(option[0])){
-                option[1]();
+            if(selected==btoa(option.description)){
+                option.fn();
             }
         });
     });
@@ -129,11 +132,15 @@ JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_OneButtonPerLin
 
         announce: value at the default (top) position of the drop down menu
 
-        option: an array of arrays of length 2
-        Each array of length 2 is made of the description and the function of arity 0 to fire if that option is chosen
-        example [
-            ["Alice", function(){ alert("Alice"); }]
-            ["Bob",   function(){ alert("Bob"); }]
+        option: example: [
+            {
+                description: "Alice",
+                fn: function(){ alert("Alice"); }
+            },
+            {
+                description: "Bob",
+                fn: function(){ alert("Bob"); }
+            }
         ]
 
     */
@@ -143,15 +150,15 @@ JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_OneButtonPerLin
     var html1 = ''
     html1 += '<div>'+parameters.announce+'</div>'
     $.each( parameters.options, function(index, option) {
-        // val: ["Alice", function(){ alert("Alice"); }]
         var uuid = JavaScriptUIElementsX35877E45.core.ridentifier();
-        html1 += '<div><input type="button" id="'+uuid+'" value="'+option[0]+'" /></div>'
+        html1 += '<div><input type="button" id="'+uuid+'" value="'+option.description+'" /></div>'
         $(document).delegate('#'+uuid, 'click', function(e){
             e.preventDefault();
-            option[1]();
+            option.fn();
         });
     });
     $('#'+parameters.targetDiv).html(html1);
 
     return true;
 }
+
