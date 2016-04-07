@@ -97,7 +97,7 @@ JavaScriptUIElementsX35877E45.suite2.choiceBetweenSeveralOptions_DropDown = func
     var html1 = ''
     var uuid1 = JavaScriptUIElementsX35877E45.core.ridentifier();
     html1 += '<select id="'+uuid1+'">';
-    html1 += '<option value="'+parameters.announce+'"></option>'
+    html1 += '<option value="">'+parameters.announce+'</option>'
     $.each( parameters.options, function(index, option) {
         // val: ["Alice", function(){ alert("Alice"); }]
         html1 += '<option value="'+btoa(option[0])+'">'+option[0]+'</option>'
